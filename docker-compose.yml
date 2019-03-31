@@ -1,0 +1,17 @@
+version: '3'
+
+volumes:
+  dbdata:
+    external: false
+
+services:
+  mariadb:
+    env_file:
+      - docker-compose.env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
